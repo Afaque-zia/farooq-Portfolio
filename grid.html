@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --primary-color: rgb(255, 255, 255);
+            --white: white;
+            --black: black;
+            --fs1: 50px;
+            --fs2: 30px;
+            --fs3: 16px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        header,
+        footer {
+            background-color: var(--primary-color);
+            color: var(--black);
+            padding: 20px;
+            text-align: center;
+        }
+
+        section.main {
+            background-color: var(--primary-color);
+            border: 3px solid var(--black);
+            padding: 100px var(--fs1);
+            text-align: center;
+
+            h2 {
+                font-size: var(--fs1);
+            }
+
+            p {
+                font-size: var(--fs2);
+                margin: var(--fs1) 0px;
+            }
+
+            button {
+                padding: 10px var(--fs2);
+                border-radius: 8px;
+                background-color: var(--black);
+                color: var(--white);
+                font-size: var(--fs2);
+            }
+        }
+
+        aside {
+            background-color: var(--black);
+            color: var(--white);
+
+            a {
+                font-size: var(--fs3);
+                padding: 10px var(--fs2);
+            }
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+        }
+
+        aside {
+            grid-column-start: 1;
+            grid-column-end: 2;
+
+            nav {
+                padding-top: var(--fs1);
+                display: grid;
+                grid-template-columns: auto;
+                gap: var(--fs2);
+
+                a {
+                    &:hover {
+                        background-color: var(--primary-color);
+                        color: var(--black);
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+
+
+        }
+
+        .main {
+            grid-column-start: 2;
+            grid-column-end: 5;
+        }
+
+        header,
+        footer {
+            grid-column-start: 1;
+            grid-column-end: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h2>This is header</h2>
+        </header>
+        <aside>
+            <nav>
+                <a href="">Home</a>
+                <a href="">About</a>
+                <a href="">Services</a>
+                <a href="">Products</a>
+                <a href="">Contact</a>
+                <a href="javascript:void(0)" id="mood">Dark Mood</a>
+            </nav>
+        </aside>
+        <section class="main">
+            <h2>Lorem, ipsum dolor.</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam nisi laborum quam odio omnis modi molestias
+                dolores obcaecati sunt ea saepe debitis, quis sed quaerat optio odit repellendus nostrum officiis, aut
+                corporis itaque in ex est? Eos hic asperiores expedita debitis dolorum aspernatur vero, saepe, labore
+                temporibus repellendus molestias dolores!</p>
+            <button>Lorem, ipsum.</button>
+        </section>
+        <footer>
+            <h2>This is a Footer</h2>
+        </footer>
+    </div>
+    <script>
+        let mood = document.querySelector("#mood");
+        mood.addEventListener('click', () => {
+            let r = document.querySelector(':root');
+
+            if (mood.innerText == "Dark Mood") {
+                r.style.setProperty('--primary-color', 'rgb(194, 115, 255)')
+                mood.innerText = 'Light Mood'
+            } else {
+                r.style.setProperty('--primary-color', '#fff')
+                mood.innerText = 'Dark Mood'
+            }
+        })
+    </script>
+</body>
+
+</html>
